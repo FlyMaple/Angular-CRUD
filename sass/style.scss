@@ -1,0 +1,150 @@
+@import 'compass/css3';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800';
+
+*, *::before, *::after {
+    position: relative;
+    box-sizing: border-box;
+}
+
+ *::before, *::after {
+     font: normal normal normal 14px/1 FontAwesome;
+}
+
+body {
+    background: #B2DFDB;
+}
+
+.wrapper {
+    width: 800px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    background: #fff;
+    @include box-shadow(0 0 5px 0 rgba(0, 0, 0, 0.61));
+
+    .container {
+        .header {
+            h1 {
+                margin: 0 0 10px 0;
+                font: {
+                    size: 30px;
+                    weight: 600;
+                }
+                text-align: center;
+                color: #0f3e54;
+                @include text-shadow(3px 1px 3px #244e4a);
+            }
+        }
+        .body {
+            .nav {
+                margin: 0 0 5px;
+                .add {
+                    padding: 4px 10px;
+                    outline: none;
+                    color: #fff;
+                    background: #48afa5;
+                    cursor: pointer;
+                    border: 1px solid rgb(53, 142, 133);
+                }
+            }
+            .list {
+                li {
+                    display: inline-block;
+                    width: 100%;
+                    padding: 8px;
+                    margin: 0 0 10px;
+                    font: {
+                        size: 13px;
+                    }
+                    background: #d8f7d9;
+                    @include border-radius(4px);
+                    @include box-shadow(0 0 2px rgb(179, 179, 179));
+                    &.readonly {
+                        input {
+                            display: none;
+                        }
+
+                        .name-wrp, .phone-wrp, .address-wrp {
+                            .text {
+                                display: inline-block;
+                            }
+                        }
+                    }
+                    &.newMemberRow {
+                        background: #2aa52e;
+
+                        input {
+                            border: 1px solid #1c8220;
+                        }
+                    }
+
+                    > div {
+                        display: inline-block;
+                    }
+                }
+                .no-wrp {
+                    width: 30px;
+                    height: 30px;
+                    font: {
+                        size: 14px;
+                        weight: 600;
+                        family: 'Open Sans', sans-serif
+                    }
+                    line-height: 30px;
+                    text-align: center;
+                    @include border-radius(4px);
+                    @include background(linear-gradient(#a8e8aa, #75cc77));
+                }
+                .name-wrp, .phone-wrp, .address-wrp {
+                    input {
+                        width: 100%;
+                        padding: 0 2px;
+                        outline: none;
+                        border: 1px solid rgb(183, 210, 184);
+                    }
+                    
+                    .text {
+                        display: none;
+                    }
+                }
+                .name-wrp {
+                    width: 20%;
+                    padding: 0 0 0 20px;
+                }
+                .phone-wrp {
+                    width: 20%;
+                }
+                .address-wrp {
+                    width: 42%;
+                    margin: 0 20px 0 0;
+                }
+                .control-wrp {
+                    top: 3px;
+                    cursor: default;
+
+                    .edit, .update, .save, .remove {
+                        display: inline-block;
+                        margin: 0 15px 0 0px;
+                        cursor: pointer;
+                        z-index: 2;
+                        &::before {
+                            font: {
+                                size: 20px;
+                            }
+                            color: #183e3a;
+                            z-index: -1;
+                        }
+                    }
+                    .edit::before {
+                        content: '\f040';
+                    }
+                    .update::before, .save::before {
+                        content: '\f0c7';
+                    }
+                    .remove::before {
+                        content: '\f1f8';
+                    }
+                }
+            }
+        }
+    }
+}

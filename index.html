@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CRUD">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular CRUD</title>
+    <link rel="stylesheet" href="http://codepen.io/assets/reset/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrapper" ng-controller="crudController">
+        <div class="container">
+            <div class="header">
+                <h1>CRUD</h1>
+            </div>
+            <div class="body">
+                <div class="nav">
+                    <button class="add" ng-click="showNewMemberRow()">+ Add</button>
+                </div>
+                <ul class="list">
+                    <li class="newMemberRow" ng-if="isShowNewMemberRow()">
+                        <div class="no-wrp">N</div>
+                        <div class="name-wrp">
+                            <input type="text" ng-model="newMemberInstance.name">
+                        </div>
+                        <div class="phone-wrp">
+                            <input type="text" ng-model="newMemberInstance.phone">
+                        </div>
+                        <div class="address-wrp">
+                            <input type="text" ng-model="newMemberInstance.address">
+                        </div>
+                        <div class="control-wrp">
+                            <span class="save" ng-click="create(newMemberInstance)"></span>
+                        </div>
+                    </li>
+                    <li ng-class="{readonly: isReadOnly(member)}" ng-repeat="member in members">
+                        <div class="no-wrp" ng-bind="($index+1)"></div>
+                        <div class="name-wrp">
+                            <div class="text" ng-bind="member.name"></div>
+                            <input type="text" ng-model="member.name">
+                        </div>
+                        <div class="phone-wrp">
+                            <div class="text" ng-bind="member.phone"></div>
+                            <input type="text" ng-model="member.phone">
+                        </div>
+                        <div class="address-wrp">
+                            <div class="text" ng-bind="member.address"></div>
+                            <input type="text" ng-model="member.address">
+                        </div>
+                        <div class="control-wrp">
+                            <span class="edit" ng-if="isReadOnly(member)" ng-click="edit(member)"></span>
+                            <span class="update" ng-if="!isReadOnly(member)" ng-click="update(member)"></span>
+                            <span class="remove" ng-click="remove(member)"></span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
